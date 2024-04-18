@@ -1,6 +1,7 @@
 {
-    "name": "electron-next",
+    "name": "starseeker",
     "version": "0.1.0",
+    "authors": "Gabriel Perico e Joao Paulo Gregolon Paludo",
     "private": true,
     "main": "main/main.js",
     "scripts": {
