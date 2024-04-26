@@ -15,6 +15,8 @@
 - A aplicação deve ser desenvolvida utilizando o framework [Electron](https://www.electronjs.org/pt/);
 - Deve ser usado o framework back-end [NextJS](https://nextjs.org/);
 - A aplicação deve armazenar dados utilizando Local Storage;
+- A aplicação deve criptografar as informações salvas no Local Storage para ter maior segurança das informações e evitar acesso e alterções indevidos dos dados armazenados;
+- A aplicação deve ser otimizada para ter um carregamento rápido, garantindo uma experiência fluida ao usuário;
 - A aplicação deve ser multi idiomas (Português, Inglês e Espanhol);
 - O build da aplicação deve ter suporte para múltiplos sistemas operacionais (Windows, Linux e Mac);
 - A aplicação deve ter acesso a internet para consulta de informações.
