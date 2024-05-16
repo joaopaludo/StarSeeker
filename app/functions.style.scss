@@ -1,0 +1,6 @@
+// mixin that generates multiple properties based on a map of colors
+@mixin generate-colors($colors) {
+    @each $color, $value in $colors {
+        --#{$color}: #{$value};
+    }
+}
