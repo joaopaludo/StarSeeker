@@ -1,5 +1,8 @@
-import type { Metadata } from "next";
+"use client";
+
+import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Montserrat, Hind } from "next/font/google";
 import "./global.style.scss";
 import Background from "./background";
@@ -11,28 +14,53 @@ const montserrat = Montserrat({
 });
 const hind = Hind({ subsets: ["latin"], variable: "--ff-hind", weight: "400" });
 
-export const metadata: Metadata = {
-    title: "StarSeeker",
-    description: "Astronomy calendar and events",
-};
-
 export default function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    const pathname = usePathname();
+
     return (
         <html lang="en">
             <body className={`${montserrat.variable} ${hind.variable}`}>
                 <Background />
 
-                <nav>
-                    <div className="logo"></div>
+                <nav className="navbar">
+                    <div className="nav_logo">
+                        <Link href={"/"}>
+                            <Image
+                                alt="StarSeeker logo"
+                                src={"/Logo.svg"}
+                                width={160}
+                                height={51.5}
+                            />
+                        </Link>
+                    </div>
 
-                    <div className="links">
-                        <Link href={"/calendario"}>Calendário</Link>
-                        <Link href={"/noticias"}>Notícias</Link>
-                        <Link href={"/sistema-solar"}>Sistema Solar</Link>
+                    <div className="nav_links h-s">
+                        <Link
+                            href={"/calendario"}
+                            className={
+                                pathname === "/calendario" ? `active` : ""
+                            }
+                        >
+                            Calendário
+                        </Link>
+                        <Link
+                            href={"/noticias"}
+                            className={pathname === "/noticias" ? `active` : ""}
+                        >
+                            Notícias
+                        </Link>
+                        <Link
+                            href={"/sistema-solar"}
+                            className={
+                                pathname === "/sistema-solar" ? `active` : ""
+                            }
+                        >
+                            Sistema Solar
+                        </Link>
                     </div>
                 </nav>
 
