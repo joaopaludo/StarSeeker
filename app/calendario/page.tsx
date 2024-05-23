@@ -1,42 +1,27 @@
-const Page: React.FC = () => {
-    return (
-        <main>
-            <h1>Calendario</h1>
-        </main>
-    );
+"use client";
+
+import React, { useRef, useEffect } from "react";
+import { Calendar } from "@fullcalendar/core";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import interactionPlugin from "@fullcalendar/interaction";
+
+const FullCalendar = () => {
+    const calendarRef = useRef<any>(null);
+
+    useEffect(() => {
+        const calendar = new Calendar(calendarRef.current, {
+            plugins: [dayGridPlugin, interactionPlugin],
+            initialView: "dayGridMonth",
+            events: [
+                { title: "Event 1", date: "2024-05-23" },
+                { title: "Event 2", date: "2024-05-02" },
+            ],
+        });
+
+        calendar.render();
+    }, []);
+
+    return <div ref={calendarRef}></div>;
 };
 
-export default Page;
-
-// import { Calendar, dateFnsLocalizer } from "react-big-calendar";
-// import format from "date-fns/format";
-// import parse from "date-fns/parse";
-// import startOfWeek from "date-fns/startOfWeek";
-// import getDay from "date-fns/getDay";
-// import enUS from "date-fns/locale/en-US";
-
-// const locales = {
-//     "en-US": enUS,
-// };
-
-// const localizer = dateFnsLocalizer({
-//     format,
-//     parse,
-//     startOfWeek,
-//     getDay,
-//     locales,
-// });
-
-// const MyCalendar = () => (
-//     <div>
-//         <Calendar
-//             localizer={localizer}
-//             events={[]}
-//             startAccessor="start"
-//             endAccessor="end"
-//             style={{ height: 500 }}
-//         />
-//     </div>
-// );
-
-// export default MyCalendar;
+export default FullCalendar;
