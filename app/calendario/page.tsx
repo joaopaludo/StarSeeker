@@ -1,5 +1,6 @@
 "use client";
 
+import "./style.scss";
 import React, { useRef, useEffect } from "react";
 import { Calendar } from "@fullcalendar/core";
 import dayGridPlugin from "@fullcalendar/daygrid";
