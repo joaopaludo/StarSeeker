@@ -2,6 +2,9 @@ const { app, BrowserWindow } = require("electron");
 const serve = require("electron-serve");
 const path = require("path");
 
+dotenv = require("dotenv");
+dotenv.config({ path: path.join(__dirname, "../.env") });
+
 const appServe = app.isPackaged
     ? serve({
           directory: path.join(__dirname, "../out"),
@@ -22,7 +25,7 @@ const createWindow = () => {
             win.loadURL("app://-");
         });
     } else {
-        win.loadURL("http://localhost:3000");
+        win.loadURL("https://localhost:3000");
         win.webContents.on("did-fail-load", (e, code, desc) => {
             win.webContents.reloadIgnoringCache();
         });

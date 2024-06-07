@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import FaseLua from "./fase-lua";
 
 export const metadata: Metadata = {
     title: "StarSeeker",
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
 export default function Home() {
     return (
         <main>
-            <h1>Teste</h1>
+            <FaseLua />
         </main>
     );
 }

@@ -1,0 +1,32 @@
+.fase-lua__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 30px;
+
+    .fase-lua__image {
+        display: flex;
+        position: relative;
+
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .fase-lua__content {
+        display: flex;
+        flex-direction: column;
+
+        gap: 15px;
+
+        .fase-lua__horarios {
+            display: flex;
+            flex-direction: column;
+        }
+
+        span.p-m,
+        h4.h-s {
+            color: var(--white-950);
+        }
+    }
+}

@@ -6,6 +6,11 @@ import { useQuery } from "@tanstack/react-query";
 const Background = (props: any) => {
     const { data, isFetching, isPending } = useQuery({
         queryKey: ["apod"],
+
+        refetchOnWindowFocus: false,
+        refetchOnMount: false,
+        refetchOnReconnect: false,
+
         queryFn: async () => {
             return await fetch(
                 `https://api.nasa.gov/planetary/apod?api_key=${
@@ -15,6 +20,8 @@ const Background = (props: any) => {
                 .then((response) => response.json())
                 .catch((err) => console.log(err));
         },
+
+        refetchInterval: 1000 * 60 * 60 * 24, // 24 hours
     });
 
     if (isFetching || isPending) {
