@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { Montserrat, Hind } from "next/font/google";
 import "./global.style.scss";
 import Background from "./background";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryProvider } from "./query-client";
 
 const montserrat = Montserrat({
     subsets: ["latin"],
@@ -21,12 +21,10 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const [queryClient] = useState(() => new QueryClient());
-
     const pathname = usePathname();
 
     return (
-        <QueryClientProvider client={queryClient}>
+        <QueryProvider>
             <html lang="en">
                 <body className={`${montserrat.variable} ${hind.variable}`}>
                     <Background />
@@ -76,6 +74,6 @@ export default function RootLayout({
                     {children}
                 </body>
             </html>
-        </QueryClientProvider>
+        </QueryProvider>
     );
 }
