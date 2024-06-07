@@ -6,25 +6,41 @@ import { Calendar } from "@fullcalendar/core";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import listPlugin from "@fullcalendar/list";
 import interactionPlugin from "@fullcalendar/interaction";
+import { useQuery } from "@tanstack/react-query";
+import { format } from "date-fns";
 
 const weekdays = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
 
-// TODO fetch events from API
-
-const FullCalendar = () => {
+const Calendario = () => {
     const calendarRef = useRef<any>(null);
 
+    const { data, isFetching, isPending } = useQuery({
+        queryKey: ["events"],
+        queryFn: async () => {
+            return await fetch(
+                `https://ll.thespacedevs.com/2.2.0/event/upcoming/`
+            )
+                .then((response) => response.json())
+                .catch((err) => console.log(err));
+        },
+    });
+
+    const events = data?.results.map((event: any) => {
+        return {
+            title: event.description,
+            date: format(new Date(event.date), "yyyy-MM-dd"),
+        };
+    });
+
     useEffect(() => {
+        if (isFetching || isPending || !calendarRef.current) {
+            return;
+        }
+
         const calendar = new Calendar(calendarRef.current, {
             plugins: [dayGridPlugin, listPlugin, interactionPlugin],
             initialView: "dayGridMonth",
-            events: [
-                { title: "Event 1", date: "2024-05-17" },
-                { title: "Event 2", date: "2024-05-23" },
-                { title: "Event 3", date: "2024-05-01" },
-                { title: "Event 4", date: "2024-05-13" },
-                { title: "Event 5", date: "2024-05-30" },
-            ],
+            events: events,
             height: "auto",
             headerToolbar: {
                 start: "prev,next",
@@ -44,9 +60,9 @@ const FullCalendar = () => {
         });
 
         calendar.render();
-    }, []);
+    }, [isFetching, isPending, data]);
 
     return <div ref={calendarRef}></div>;
 };
 
-export default FullCalendar;
+export default Calendario;
