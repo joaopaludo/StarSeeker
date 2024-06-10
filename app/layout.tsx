@@ -6,8 +6,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Montserrat, Hind } from "next/font/google";
 import "./global.style.scss";
-import Background from "./background";
+import Background from "./background/background";
 import { QueryProvider } from "./query-client";
+import { BackgroundProvider } from "./home/layout-context";
+import Providers from "./providers";
 
 const montserrat = Montserrat({
     subsets: ["latin"],
@@ -24,9 +26,9 @@ export default function RootLayout({
     const pathname = usePathname();
 
     return (
-        <QueryProvider>
-            <html lang="en">
-                <body className={`${montserrat.variable} ${hind.variable}`}>
+        <html lang="en">
+            <body className={`${montserrat.variable} ${hind.variable}`}>
+                <Providers>
                     <Background />
 
                     <nav className="navbar">
@@ -72,8 +74,8 @@ export default function RootLayout({
                     </nav>
 
                     {children}
-                </body>
-            </html>
-        </QueryProvider>
+                </Providers>
+            </body>
+        </html>
     );
 }

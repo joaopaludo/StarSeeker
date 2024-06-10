@@ -151,14 +151,20 @@ a {
     inset: 0;
     z-index: -1;
     object-fit: cover;
-    pointer-events: none;
 
     filter: blur(30px);
+
+    transition: filter 0.3s ease;
 
     img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        pointer-events: none;
+    }
+
+    &:has(~ main.showBackground) {
+        filter: blur(0px);
     }
 }
 
@@ -171,6 +177,8 @@ a {
 
     background: rgba(0, 0, 0, 0.4);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.4);
+
+    transition: transform 0.3s ease;
 
     .nav_links {
         display: flex;
@@ -187,6 +195,10 @@ a {
             color: var(--primary-500);
         }
     }
+
+    &:has(~ main.showBackground) {
+        transform: translateY(calc(-100% - 10px));
+    }
 }
 
 main {
@@ -198,4 +210,64 @@ main {
     justify-content: start;
 
     padding: 30px;
+    opacity: 1;
+
+    display: block;
+
+    transition: opacity 0.3s ease, display 0s 0.3s;
+    transition-behavior: allow-discrete;
+
+    @starting-style {
+        display: flex;
+        opacity: 1;
+    }
+
+    &.showBackground {
+        opacity: 0;
+        display: none;
+    }
+}
+
+.glass {
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
+
+    backdrop-filter: blur(10px);
+}
+
+.close-button,
+.save-button {
+    display: none;
+    opacity: 0;
+
+    position: fixed;
+    padding: 10px;
+
+    border-radius: 100vh;
+
+    z-index: 1;
+
+    transition: opacity 0.3s ease, display 0s 0.3s;
+    transition-behavior: allow-discrete;
+
+    @starting-style {
+        display: none;
+        opacity: 0;
+    }
+
+    &:is(.close-button) {
+        top: 20px;
+        right: 20px;
+    }
+
+    &:is(.save-button) {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    &:has(~ main.showBackground) {
+        display: flex;
+        opacity: 1;
+    }
 }

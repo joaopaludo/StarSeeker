@@ -1,0 +1,17 @@
+.home__head-container {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+
+    .unblur__button {
+        display: flex;
+        align-self: flex-start;
+
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 100vh;
+        padding: 10px;
+    }
+}

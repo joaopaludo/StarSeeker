@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import FaseLua from "./fase-lua";
+import FaseLua from "./home/fase-lua";
+
+import "./home.style.scss";
+
+import UnblurButton from "./home/unblur_button";
+import Main from "./home/main";
 
 export const metadata: Metadata = {
     title: "StarSeeker",
@@ -8,8 +13,12 @@ export const metadata: Metadata = {
 
 export default function Home() {
     return (
-        <main>
-            <FaseLua />
-        </main>
+        <Main>
+            <div className="home__head-container">
+                <FaseLua />
+
+                <UnblurButton />
+            </div>
+        </Main>
     );
 }

@@ -28,8 +28,8 @@ const moonPhase = (phase: number) => {
 
 const FaseLua: React.FC = () => {
     const [location, setLocation] = useState<GeolocationPosition | null>(
-        globalThis.localStorage.getItem("location")
-            ? JSON.parse(globalThis.localStorage.getItem("location") ?? "") ||
+        globalThis.localStorage?.getItem("location")
+            ? JSON.parse(globalThis.localStorage?.getItem("location") ?? "") ||
                   null
             : null
     );
@@ -38,7 +38,7 @@ const FaseLua: React.FC = () => {
         navigator.geolocation.getCurrentPosition(
             (position) => {
                 setLocation(position);
-                globalThis.localStorage.setItem(
+                globalThis.localStorage?.setItem(
                     "location",
                     JSON.stringify({
                         coords: {
