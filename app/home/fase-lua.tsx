@@ -66,12 +66,17 @@ const FaseLua: React.FC = () => {
         queryFn: async () => {
             if (!location || !location.coords) return;
 
-            const urlData = new URLSearchParams({
+            const urlData = {
                 latitude: location.coords.latitude.toString(),
                 longitude: location.coords.longitude.toString(),
-            });
+            };
 
-            return await fetch(`/api/moon-widget?${urlData.toString()}`, {})
+            return await fetch(
+                `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${urlData.latitude}%2C${urlData.longitude}/today?unitGroup=metric&elements=sunrise%2Csunset%2Cmoonphase&key=${process.env.MOONPHASE_API_KEY}&contentType=json`,
+                {
+                    method: "GET",
+                }
+            )
                 .then((response) => response.json())
                 .catch((err) => console.log(err));
         },
@@ -100,15 +105,15 @@ const FaseLua: React.FC = () => {
             </div>
             <div className="fase-lua__content">
                 <h4 className="fase-lua__title h-s">
-                    {moonPhase(data.moonphase)}
+                    {moonPhase(data.currentConditions.moonphase)}
                 </h4>
 
                 <span className="fase-lua__horarios">
                     <span className="fase-lua__nascer p-m">
-                        nas: {data.moonrise}
+                        nas: {data.currentConditions.sunset}
                     </span>
                     <span className="fase-lua__por p-m">
-                        pôr: {data.moonset}
+                        pôr: {data.currentConditions.sunrise}
                     </span>
                 </span>
             </div>
