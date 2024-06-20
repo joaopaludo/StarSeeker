@@ -17,18 +17,38 @@ const Calendario = () => {
     const { data, isFetching, isPending } = useQuery({
         queryKey: ["events"],
         queryFn: async () => {
-            return await fetch(
-                `https://ll.thespacedevs.com/2.2.0/event/upcoming/`
-            )
-                .then((response) => response.json())
-                .catch((err) => console.log(err));
+            try {
+                const [eventsResponse, launchesResponse] = await Promise.all([
+                    fetch(
+                        `https://ll.thespacedevs.com/2.2.0/event/upcoming/`
+                    ).then((response) => response.json()),
+                    fetch(
+                        `https://ll.thespacedevs.com/2.2.0/launch/upcoming/`
+                    ).then((response) => response.json()),
+                ]);
+
+                return {
+                    events: eventsResponse.results,
+                    launches: launchesResponse.results,
+                };
+            } catch (err) {
+                console.log(err);
+                return { events: [], launches: [] };
+            }
         },
     });
 
-    const events = data?.results.map((event: any) => {
+    const events = data?.events?.map((event: any) => {
         return {
             title: event.description,
             date: format(new Date(event.date), "yyyy-MM-dd"),
+        };
+    });
+
+    const launches = data?.launches?.map((launch: any) => {
+        return {
+            title: launch.name,
+            date: format(new Date(launch.net), "yyyy-MM-dd"),
         };
     });
 
@@ -40,7 +60,7 @@ const Calendario = () => {
         const calendar = new Calendar(calendarRef.current, {
             plugins: [dayGridPlugin, listPlugin, interactionPlugin],
             initialView: "dayGridMonth",
-            events: events,
+            events: [...events, ...launches],
             height: "auto",
             headerToolbar: {
                 start: "prev,next",
