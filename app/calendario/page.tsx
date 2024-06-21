@@ -38,19 +38,23 @@ const Calendario = () => {
         },
     });
 
-    const events = data?.events?.map((event: any) => {
-        return {
-            title: event.description,
-            date: format(new Date(event.date), "yyyy-MM-dd"),
-        };
-    });
+    const events = !data?.events
+        ? []
+        : data?.events.map((event: any) => {
+              return {
+                  title: event.description,
+                  date: format(new Date(event.date), "yyyy-MM-dd"),
+              };
+          });
 
-    const launches = data?.launches?.map((launch: any) => {
-        return {
-            title: launch.name,
-            date: format(new Date(launch.net), "yyyy-MM-dd"),
-        };
-    });
+    const launches = !data?.launches
+        ? []
+        : data?.launches?.map((launch: any) => {
+              return {
+                  title: launch.name,
+                  date: format(new Date(launch.net), "yyyy-MM-dd"),
+              };
+          });
 
     useEffect(() => {
         if (isFetching || isPending || !calendarRef.current) {

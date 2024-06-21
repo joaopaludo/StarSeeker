@@ -19,4 +19,4 @@
 - A aplicação deve ser otimizada para ter um carregamento rápido, garantindo uma experiência fluida ao usuário;
 - A aplicação deve ser multi idiomas (Português, Inglês e Espanhol);
 - O build da aplicação deve ter suporte para múltiplos sistemas operacionais (Windows, Linux e Mac);
-- A aplicação deve ter acesso a internet para consulta de informações.
+- A aplicação deve ter acesso à internet para consulta de informações.
