@@ -8,7 +8,6 @@
 - A aplicação deve ter a visualização da imagem astronômica diária da NASA (APOD);
 - A aplicação deve permitir fazer o download da imagem astronômica (APOD);
 - A aplicação deve ter um widget que mostra a fase atual da lua para a localidade do usuário;
-- A aplicação deve ter a funcionalidade de visualização de uma representação em duas dimensões do sistema solar e dos corpos que o compõe.
 
 ## Requisitos não funcionais
 - O projeto deve ser uma aplicação Desktop;
