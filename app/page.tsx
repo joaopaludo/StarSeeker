@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import FaseLua from "./home/fase-lua";
 
-import "./home.style.scss";
-
 import UnblurButton from "./home/unblur_button";
 import Main from "./home/main";
+import FetchingContainer from "./home/fetching-container";
+
+import "./home.style.scss";
 
 export const metadata: Metadata = {
     title: "StarSeeker",
@@ -19,6 +20,8 @@ export default function Home() {
 
                 <UnblurButton />
             </div>
+
+            <FetchingContainer />
         </Main>
     );
 }

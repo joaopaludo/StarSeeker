@@ -92,21 +92,18 @@
     font-size: 24px;
     font-weight: 700;
     font-family: var(--ff-montserrat);
-    color: var(--black-50);
 }
 
 .h-s {
     font-size: 20px;
     font-weight: 700;
     font-family: var(--ff-montserrat);
-    color: var(--black-50);
 }
 
 .h-xs {
     font-size: 16px;
     font-weight: 700;
     font-family: var(--ff-montserrat);
-    color: var(--black-50);
 }
 
 .p-m {
@@ -115,7 +112,6 @@
     line-height: 21px;
 
     font-family: var(--ff-hind);
-    color: var(--black-50);
 }
 
 .p-s {
@@ -124,7 +120,6 @@
     line-height: 15px;
 
     font-family: var(--ff-hind);
-    color: var(--black-50);
 }
 
 *,
@@ -136,6 +131,8 @@ html {
 }
 
 body {
+    color: var(--black-50);
+    font-family: var(--ff-hind);
     background-color: #171717;
     background-image: url("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY");
 }
