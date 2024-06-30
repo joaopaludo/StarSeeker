@@ -1,93 +1,98 @@
 @import "../functions.style.scss";
 
-.fc .fc-toolbar .fc-button {
-  background-color: #4c494f;
-  border: 1px;
-  border-color: var(--white);
-  border-radius: 5px;
-  margin: 20px 5px 0 5px;
-  transition: background-color 0.3s;
-}
+.main-calendar {
+    display: flex;
 
-.fc .fc-toolbar .fc-button:hover {
-  background-color: var(--info-700);
-}
-
-.fc {
-    height: 100%;
-    flex-grow: 1;
-    padding: 20px;
-
-    font-family: var(--ff-hind);
-
-    table,
-    tr,
-    td {
-        border: none !important;
+    .fc .fc-toolbar .fc-button {
+        background-color: #4c494f;
+        border: 1px;
+        border-color: var(--white);
+        border-radius: 5px;
+        margin: 20px 5px 0 5px;
+        transition: background-color 0.3s;
     }
 
-    .fc-scrollgrid-sync-table {
-        border: none;
+    .fc .fc-toolbar .fc-button:hover {
+        background-color: var(--info-700);
+    }
 
-        border-collapse: separate;
-        border-spacing: 5px;
+    .fc {
+        height: 100%;
+        flex-grow: 1;
 
-        tr {
-            min-height: calc(100% / 6);
-            height: calc(100% / 6);
-            max-height: calc(100% / 6);
+        font-family: var(--ff-hind);
 
-            td {
-                border-radius: 5px;
-                border: 1px solid var(--white-950) !important;
+        table,
+        tr,
+        td {
+            border: none !important;
+        }
 
-                background-color: hsl(from var(--white-950) h s l / 0.25);
-                color: var(--white-950) !important;
+        .fc-scrollgrid-sync-table {
+            border: none;
 
-                &.fc-day-other {
-                    opacity: 0.5;
-                }
+            border-collapse: separate;
+            border-spacing: 5px;
 
-                &.fc-day-today {
+            tr {
+                min-height: calc(100% / 6);
+                height: calc(100% / 6);
+                max-height: calc(100% / 6);
+
+                td {
+                    border-radius: 5px;
+                    border: 1px solid var(--white-950) !important;
+
                     background-color: hsl(from var(--white-950) h s l / 0.25);
-                }
+                    color: var(--white-950) !important;
 
-                ::before,
-                ::after {
-                    display: none;
-                }
-
-                .fc-daygrid-day-frame {
-                    display: flex;
-                    flex-direction: column;
-
-                    padding: 5px;
-
-                    justify-content: space-between;
-                }
-
-                .fc-daygrid-day-bg {
-                    display: none;
-                }
-
-                .fc-daygrid-day-top {
-                    a {
-                        display: flex;
-                        padding: 0;
+                    &.fc-day-other {
+                        opacity: 0.5;
                     }
-                }
 
-                .fc-daygrid-day-events {
-                    display: flex;
-                    flex-direction: column;
+                    &.fc-day-today {
+                        background-color: hsl(
+                            from var(--white-950) h s l / 0.25
+                        );
+                    }
 
-                    overflow: auto;
+                    ::before,
+                    ::after {
+                        display: none;
+                    }
 
-                    gap: 2px;
-                    .fc-event-title-container {
+                    .fc-daygrid-day-frame {
                         display: flex;
-                        align-items: center;
-                        justify-content: center;
+                        flex-direction: column;
+
+                        padding: 5px;
+
+                        justify-content: space-between;
+                    }
+
+                    .fc-daygrid-day-bg {
+                        display: none;
+                    }
+
+                    .fc-daygrid-day-top {
+                        a {
+                            display: flex;
+                            padding: 0;
+                        }
+                    }
+
+                    .fc-daygrid-day-events {
+                        display: flex;
+                        flex-direction: column;
+
+                        overflow: auto;
+
+                        gap: 2px;
+                        .fc-event-title-container {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
                     }
                 }
             }

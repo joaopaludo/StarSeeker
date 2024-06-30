@@ -131,6 +131,7 @@ html {
 }
 
 body {
+    min-height: 100svh;
     color: var(--black-50);
     font-family: var(--ff-hind);
     background-color: #171717;
@@ -167,6 +168,12 @@ a {
 }
 
 .navbar {
+    position: sticky;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -200,7 +207,7 @@ a {
 }
 
 main {
-    min-height: calc(100dvh - 85.5px);
+    min-height: calc(100dvh - 90.5px);
 
     display: flex;
     flex-direction: column;

@@ -98,6 +98,10 @@ const Calendario = () => {
                 if (e.view.currentStart.getMonth() !== currentMonth) {
                     setCurrentMonth(e.view.currentStart.getMonth());
                 }
+
+                if (e.view.currentStart.getFullYear() !== currentYear) {
+                    setCurrentYear(e.view.currentStart.getFullYear());
+                }
             },
         });
 
@@ -119,7 +123,11 @@ const Calendario = () => {
         }
     }, [events, launches]);
 
-    return <div ref={calendarContainerRef}></div>;
+    return (
+        <main className="main-calendar">
+            <div ref={calendarContainerRef}></div>
+        </main>
+    );
 };
 
 export default Calendario;

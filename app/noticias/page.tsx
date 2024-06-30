@@ -3,8 +3,7 @@
 import "./style.scss";
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { format } from "date-fns";
-import { ptBR } from "date-fns/locale";
+import Noticia from "./noticia";
 
 const Noticias = () => {
     const { data, isFetching, isPending } = useQuery({
@@ -32,27 +31,15 @@ const Noticias = () => {
     }
 
     return (
-        <div>
+        <main className="main-noticias">
             <h1>Notícias</h1>
 
             <div className="container-noticias">
                 {data?.results.map((noticia: any) => (
-                    <div className="noticia">
-                        <div className="conteudo-noticia" key={noticia.id}>
-                            <h2>{noticia.title}</h2>
-                            <p>
-                                {format(
-                                    new Date(noticia.updated_at),
-                                    "d MMMM, yyyy",
-                                    { locale: ptBR }
-                                )}
-                            </p>
-                            <p>{noticia.summary}</p>
-                        </div>
-                    </div>
+                    <Noticia noticia={noticia} key={noticia.id} />
                 ))}
             </div>
-        </div>
+        </main>
     );
 };
 
