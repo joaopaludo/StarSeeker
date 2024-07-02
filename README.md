@@ -1,38 +1,54 @@
-# 🔭 StarSeeker
+# <p align="center"> <strong> 🔭  StarSeeker  🌟 </strong> </p>
 
-## App de informações e eventos astronômicos
+## <p align="center"> <strong> App de informações e eventos astronômicos </strong> </center> </p>
 
-StarSeeker é uma aplicação de desktop desenvolvida com [Electron](https://www.electronjs.org/pt/) e [Next.js](https://nextjs.org/), projetada para entusiastas da astronomia e da exploração espacial. O aplicativo oferece uma gama de recursos interativos para ajudar os usuários a explorar o universo a partir de seus desktops. Se você tem interesse em eventos celestes ou em missões espaciais, o StarSeeker é a ferramenta perfeita para manter você informado e envolvido.
+<p align="justify"> O StarSeeker é uma aplicação desktop desenvolvida como parte de atividade avaliativa das disciplinas de Programação III e Engenharia de Software II, para o curso de Bacharelado em Ciência da Computação da Universidade do Oeste de Santa Catarina - UNOESC, Campus São Miguel do Oeste. </p>
+
+<p align="justify"> O app StarSeeker foi projetado para entusiastas da astronomia e da exploração espacial, oferecendo uma gama de recursos interativos para ajudar os usuários a explorar o universo a partir de seus desktops. Se você tem interesse em eventos celestes ou em missões espaciais, o StarSeeker é a ferramenta perfeita para manter você informado e envolvido. </p>
+
+<p align="justify"> O desenvolvimento do app fez uso de ferramentas como <a href="https://www.electronjs.org/pt/">Electron</a> e <a href="https://nextjs.org/">Next.js</a>, métodos ágeis e controle de tarefas com Kanban no <a href="https://www.notion.so/pt-br">Notion</a>, além de testes de caixa branca implementados com <a href="https://jestjs.io/pt-BR/">Jest</a> e testes de release, resultando em um app que pode ser executado em diferentes sistemas operacionais (Windows, Mac e Linux). </p>
 
 -----
 
+### 🔎 O que você encontrará aqui:
+- Código fonte da aplicação com Next.js e Electron
+- Diagramas UML de casos de uso e de sequência
+- Artigo documentando o desenvolvimento do projeto
+- Requisitos do projeto
 
-## Para começar
 
-Primeiro, rode o server de desenvolvimento:
+### 🛠️ Ferramentas e tecnologias usadas no projeto
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Electron
+- React
+- Next.js
+- Jest
+- Visual Paradigm Online
+- Visual Studio Code
+- Electron-Builder
 
-Abra [http://localhost:3000](http://localhost:3000) no navegador para ver o resultado.
-
-Você pode começar a editar o conteúdo em `app/page.tsx`. A página irá atualizar-se conforme você editar o arquivo.
-
-Esse projeto usa [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) para otimizar e carregar Inter.
-
-## Saiba mais
-
--   [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
--   [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 ## Autores
 
-* [Gabriel Périco](https://github.com/gabrielperico)
-* [João Paulo Gregolon Paludo](https://github.com/joaopaludo)
+<table>
+    <tr>
+        <td align="center">
+            <a href="https://github.com/gabrielperico">
+                <img src="https://avatars.githubusercontent.com/u/49540363?v=4" width="100px;" alt="Gabriel Périco"/>
+                <br>
+                <sub>
+                    <b>Gabriel Périco</b>
+                </sub>
+            </a>
+        </td>
+        <td align="center">
+            <a href="https://github.com/joaopaludo">
+                <img src="https://avatars.githubusercontent.com/u/72082760?v=4" width="100px;" alt="João Paulo Gregolon Paludo"/>
+                <br>
+                <sub>
+                    <b>João Paulo Gregolon Paludo</b>
+                </sub>
+            </a>
+        </td>
+    </tr>
+</table>
