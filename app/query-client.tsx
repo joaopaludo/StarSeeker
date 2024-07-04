@@ -9,7 +9,6 @@ const queryClient = new QueryClient({
             refetchOnMount: false,
             refetchOnReconnect: false,
 
-            staleTime: Infinity,
             refetchInterval: 1000 * 60 * 60 * 24, // 24 hours
         },
     },

@@ -4,10 +4,11 @@ import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
 import CloseButton from "./close-button";
 import SaveButton from "./save-button";
+import { format } from "date-fns";
 
 const Background = (props: any) => {
     const { data, isFetching, isPending } = useQuery({
-        queryKey: ["apod"],
+        queryKey: ["apod", format(new Date(), "yyyy-MM-dd")],
 
         refetchOnWindowFocus: false,
         refetchOnMount: false,
@@ -22,8 +23,6 @@ const Background = (props: any) => {
                 .then((response) => response.json())
                 .catch((err) => console.log(err));
         },
-
-        refetchInterval: 1000 * 60 * 60 * 24, // 24 hours
     });
 
     if (isFetching || isPending) {
