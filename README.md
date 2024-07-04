@@ -17,6 +17,22 @@
 - Requisitos do projeto
 
 
+### 📦 Estrutura do projeto
+
+- Diretórios de código fonte da aplicação
+  - 📁 app
+  - 📁 main
+
+- 📁 documentos
+  - 📑StarSeeker (Apresentação de slides do projeto)
+  - 📑Artigo - Relatório final (Relatório do projeto no formato de artigo)
+  - 📄requisitos (Requisitos funcionais e não funcionais definidos para o projeto)
+
+- 📁 public (Imagens e recursos utilizados na aplicação)
+
+- 📄 README (Arquivo de apresentação e explicação do app)
+
+
 ### 🛠️ Ferramentas e tecnologias usadas no projeto
 
 - Electron
