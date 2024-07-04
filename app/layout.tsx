@@ -60,7 +60,7 @@ export default function RootLayout({
                             >
                                 Notícias
                             </Link>
-                            <Link
+                            {/* <Link
                                 href={"/sistema-solar"}
                                 className={
                                     pathname === "/sistema-solar"
@@ -69,7 +69,7 @@ export default function RootLayout({
                                 }
                             >
                                 Sistema Solar
-                            </Link>
+                            </Link> */}
                         </div>
                     </nav>
 

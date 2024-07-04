@@ -150,7 +150,7 @@ a {
     z-index: -1;
     object-fit: cover;
 
-    filter: blur(30px);
+    filter: blur(30px) brightness(0.5);
 
     transition: filter 0.3s ease;
 
@@ -163,7 +163,7 @@ a {
     }
 
     &:has(~ main.showBackground) {
-        filter: blur(0px);
+        filter: blur(0px) brightness(1);
     }
 }
 
@@ -197,7 +197,7 @@ a {
         transition: color 0.3s ease;
 
         .active {
-            color: var(--primary-500);
+            color: var(--info-600);
         }
     }
 

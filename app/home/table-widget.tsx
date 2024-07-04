@@ -5,6 +5,7 @@ type TableWidgetItem = {
     title: string;
     description: string;
     siteName?: string;
+    siteUrl?: string;
     date: string;
 };
 
@@ -28,7 +29,7 @@ const TableWidget: FC<TableWidgetProps> = ({
             <h4 className="h-xs">{title}</h4>
 
             <div className="table-widget__container">
-                {items.splice(0, 3).map((item, index) => (
+                {items.slice(0, 3).map((item, index) => (
                     <Fragment key={index}>
                         <div className="table-widget__item">
                             <div className="table-widget__item-text">
@@ -37,7 +38,17 @@ const TableWidget: FC<TableWidgetProps> = ({
                             </div>
 
                             <div className="table-widget__item-links p-m">
-                                <div className="site-link">{item.siteName}</div>
+                                <div className="site-link">
+                                    {item.siteUrl && (
+                                        <img
+                                            src={`https://icon.horse/icon/${item.siteUrl}`}
+                                            alt={`${item.siteUrl} logo`}
+                                            className="site-logo"
+                                        />
+                                    )}
+
+                                    {item.siteName}
+                                </div>
 
                                 <div className="date">{item.date}</div>
                             </div>

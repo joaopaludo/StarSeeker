@@ -1,13 +1,20 @@
 "use client";
 
 import "./style.scss";
-import React from "react";
+import { format } from "date-fns";
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Noticia from "./noticia";
 
 const Noticias = () => {
+    const [date, setDate] = useState<string>(format(new Date(), "yyyy-MM-dd"));
+
+    useEffect(() => {
+        setDate(format(new Date(), "yyyy-MM-dd"));
+    }, [format(new Date(), "yyyy-MM-dd")]);
+
     const { data, isFetching, isPending } = useQuery({
-        queryKey: ["noticias"],
+        queryKey: ["noticias", date],
         queryFn: async () => {
             try {
                 const response = await fetch(

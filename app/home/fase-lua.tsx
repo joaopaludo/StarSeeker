@@ -72,7 +72,7 @@ const FaseLua: React.FC = () => {
             };
 
             return await fetch(
-                `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${urlData.latitude}%2C${urlData.longitude}/today?unitGroup=metric&elements=sunrise%2Csunset%2Cmoonphase&key=${process.env.MOONPHASE_API_KEY}&contentType=json`,
+                `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${urlData.latitude}%2C${urlData.longitude}/today?unitGroup=metric&elements=sunrise%2Csunset%2Cmoonphase&key=${process.env.NEXT_PUBLIC_MOONPHASE_API_KEY}&contentType=json`,
                 {
                     method: "GET",
                 }

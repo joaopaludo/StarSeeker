@@ -36,7 +36,7 @@ const Noticia: FC<NoticiaProps> = ({ noticia }) => {
 
                 <span className="info-noticia">
                     <img
-                        src={`https://www.icon.horse/icon/${siteName}`}
+                        src={`https://icon.horse/icon/${siteName}`}
                         alt={`${siteName} logo`}
                         className="site-logo"
                     />

@@ -2,7 +2,8 @@
 
 import "./style.scss";
 import React, { useRef, useEffect, useState, useMemo } from "react";
-import { Calendar } from "@fullcalendar/core";
+// import { Calendar } from "@fullcalendar/core";
+import Calendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import listPlugin from "@fullcalendar/list";
 import interactionPlugin from "@fullcalendar/interaction";
@@ -13,11 +14,10 @@ const weekdays = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
 
 const Calendario = () => {
     const calendarRef = useRef<Calendar | null>(null);
-    const calendarContainerRef = useRef<any>(null);
     const [currentMonth, setCurrentMonth] = useState(new Date().getMonth() + 1);
     const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
 
-    const { data, isFetching, isPending, dataUpdatedAt } = useQuery({
+    const { data, dataUpdatedAt } = useQuery({
         queryKey: ["events", currentMonth + 1, currentYear],
         queryFn: async () => {
             try {
@@ -67,65 +67,40 @@ const Calendario = () => {
               });
     }, [dataUpdatedAt]);
 
-    useEffect(() => {
-        if (isFetching || isPending || !calendarContainerRef.current) {
-            return;
-        }
-
-        calendarRef.current = new Calendar(calendarContainerRef.current, {
-            plugins: [dayGridPlugin, listPlugin, interactionPlugin],
-            initialView: "dayGridMonth",
-            events: [...events, ...launches],
-            height: "auto",
-            headerToolbar: {
-                start: "prev,next",
-                center: "title",
-                end: "dayGridMonth dayGridWeek listDay",
-            },
-            buttonText: {
-                month: "Mensal",
-                week: "Semanal",
-                day: "Diário",
-            },
-            locale: "pt-BR",
-            dayHeaders: false,
-            dayCellContent: (e) => {
-                return `${e.dayNumberText} - ${weekdays[e.date.getDay()]}`;
-            },
-
-            datesSet: (e) => {
-                // on month change, refetch data
-                if (e.view.currentStart.getMonth() !== currentMonth) {
-                    setCurrentMonth(e.view.currentStart.getMonth());
-                }
-
-                if (e.view.currentStart.getFullYear() !== currentYear) {
-                    setCurrentYear(e.view.currentStart.getFullYear());
-                }
-            },
-        });
-
-        calendarRef.current.render();
-
-        return () => {
-            if (calendarRef.current) calendarRef.current.destroy();
-        };
-    }, []);
-
-    useEffect(() => {
-        if (calendarRef.current) {
-            calendarRef.current.removeAllEventSources();
-
-            calendarRef.current.addEventSource(events);
-            calendarRef.current.addEventSource(launches);
-
-            calendarRef.current.render();
-        }
-    }, [events, launches]);
-
     return (
         <main className="main-calendar">
-            <div ref={calendarContainerRef}></div>
+            <Calendar
+                ref={calendarRef}
+                plugins={[dayGridPlugin, listPlugin, interactionPlugin]}
+                initialView="dayGridMonth"
+                events={[...events, ...launches]}
+                height="auto"
+                headerToolbar={{
+                    start: "prev,next",
+                    center: "title",
+                    end: "dayGridMonth dayGridWeek listDay",
+                }}
+                buttonText={{
+                    month: "Mensal",
+                    week: "Semanal",
+                    day: "Diário",
+                }}
+                locale="pt-BR"
+                dayHeaders={false}
+                dayCellContent={(e) => {
+                    return `${e.dayNumberText} - ${weekdays[e.date.getDay()]}`;
+                }}
+                datesSet={(e) => {
+                    // on month change, refetch data
+                    if (e.view.currentStart.getMonth() !== currentMonth) {
+                        setCurrentMonth(e.view.currentStart.getMonth());
+                    }
+
+                    if (e.view.currentStart.getFullYear() !== currentYear) {
+                        setCurrentYear(e.view.currentStart.getFullYear());
+                    }
+                }}
+            />
         </main>
     );
 };
