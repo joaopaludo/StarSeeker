@@ -61,7 +61,7 @@ const FaseLua: React.FC = () => {
                         latitude: -26.724806,
                         longitude: -53.538873
                     }
-                });
+                } as any);
 
                 globalThis.localStorage?.setItem(
                     "location",
