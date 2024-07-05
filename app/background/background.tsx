@@ -1,5 +1,6 @@
 import ReactPlayer from "../videoPlayer";
 import Image from "next/image";
+import React from "react";
 
 import { useQuery } from "@tanstack/react-query";
 import CloseButton from "./close-button";
@@ -17,7 +18,7 @@ const Background = (props: any) => {
         queryFn: async () => {
             return await fetch(
                 `https://api.nasa.gov/planetary/apod?api_key=${
-                    process.env.NASA_API ?? "DEMO_KEY"
+                    process.env.NEXT_PUBLIC_NASA_API ?? "DEMO_KEY"
                 }`
             )
                 .then((response) => response.json())

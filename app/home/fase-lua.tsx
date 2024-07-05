@@ -78,6 +78,7 @@ const FaseLua: React.FC = () => {
                 }
             )
                 .then((response) => response.json())
+                .then((data) => data.currentConditions)
                 .catch((err) => console.log(err));
         },
     });
@@ -105,15 +106,15 @@ const FaseLua: React.FC = () => {
             </div>
             <div className="fase-lua__content">
                 <h4 className="fase-lua__title h-s">
-                    {moonPhase(data.currentConditions.moonphase)}
+                    {moonPhase(data.moonphase)}
                 </h4>
 
                 <span className="fase-lua__horarios">
                     <span className="fase-lua__nascer p-m">
-                        nas: {data.currentConditions.sunset}
+                        nas: {data.sunset}
                     </span>
                     <span className="fase-lua__por p-m">
-                        pôr: {data.currentConditions.sunrise}
+                        pôr: {data.sunrise}
                     </span>
                 </span>
             </div>

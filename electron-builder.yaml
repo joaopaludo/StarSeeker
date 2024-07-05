@@ -1,10 +1,10 @@
-productName: "Electron Next.JS"
+productName: "StarSeeker"
 win:
-    target: ["dir", "portable", "zip"]
-    icon: "resources/icon.ico"
+    target: ["msi"]
+    icon: "public/icon.ico"
 linux:
-    target: ["dir", "appimage", "zip"]
-    icon: "resources/icon.png"
+    target: ["appimage"]
+    icon: "public/icon.png"
 mac:
-    target: ["dir", "dmg", "zip"]
-    icon: "resources/icon.icns"
+    target: ["dmg"]
+    icon: "public/icon.icns"

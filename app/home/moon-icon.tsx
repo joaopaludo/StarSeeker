@@ -23,6 +23,8 @@ const MoonIcon: React.FC<{ moonphase: number }> = ({ moonphase }) => {
     if (moonphase === 0.75) moonNumber = 6;
     if (moonphase > 0.75 && moonphase <= 1) moonNumber = 7;
 
+    console.log(moonphase);
+
     return (
         <Image
             src={`/${moonImages[moonNumber]}.png`}
