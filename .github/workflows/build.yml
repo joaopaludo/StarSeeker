@@ -34,27 +34,29 @@ jobs:
               with:
                   node-version: 20
 
-            - name: Make envfile
-              uses: SpicyPizza/create-envfile@v1
-              with:
-                GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
-                NEXT_PUBLIC_MOONPHASE_API_KEY: ${{ secrets.NEXT_PUBLIC_MOONPHASE_API_KEY }}
-                file_name: .env
-
             - name: Install Dependencies
               run: npm install
 
             - name: build-linux
               if: matrix.os == 'ubuntu-latest'
               run: npm run build --linux
+              env: 
+                GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+                NEXT_PUBLIC_MOONPHASE_API_KEY: ${{ secrets.NEXT_PUBLIC_MOONPHASE_API_KEY }}
 
             - name: build-mac
               if: matrix.os == 'macos-latest'
               run: npm run build --mac
+              env: 
+                GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+                NEXT_PUBLIC_MOONPHASE_API_KEY: ${{ secrets.NEXT_PUBLIC_MOONPHASE_API_KEY }}
 
             - name: build-win
               if: matrix.os == 'windows-latest'
               run: npm run build --win
+              env: 
+                GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+                NEXT_PUBLIC_MOONPHASE_API_KEY: ${{ secrets.NEXT_PUBLIC_MOONPHASE_API_KEY }}
 
             - name: release
               uses: softprops/action-gh-release@v1
