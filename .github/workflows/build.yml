@@ -32,8 +32,8 @@ jobs:
               if: matrix.os == 'ubuntu-latest'
               run: npm run build -l
 
-            - name: build-mac
-              if: matrix.os == 'macos-latest'
+            # - name: build-mac
+              # if: matrix.os == 'macos-latest'
               # run: npm run build -m
 
             - name: build-win
