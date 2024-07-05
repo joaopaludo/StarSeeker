@@ -24,7 +24,8 @@
   - 📁 main
 
 - 📁 documentos
-  - 📑StarSeeker (Apresentação de slides do projeto)
+  - 📁 diagramas (diagramas de casos de uso e de sequência do projeto)
+  - 📄StarSeeker (Apresentação de slides do projeto)
   - 📑Artigo - Relatório final (Relatório do projeto no formato de artigo)
   - 📄requisitos (Requisitos funcionais e não funcionais definidos para o projeto)
 
