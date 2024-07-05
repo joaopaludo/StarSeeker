@@ -1,7 +1,9 @@
 name: Build/release Electron app
 
-on: push
-
+on:
+  push:
+    tags:
+      - v*.*.*
 
 env:
   CI: false
