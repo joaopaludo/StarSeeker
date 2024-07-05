@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import MoonIcon from "./moon-icon";
+import { format } from "date-fns";
 
 import "./fase-lua.style.scss";
 
@@ -34,6 +35,12 @@ const FaseLua: React.FC = () => {
             : null
     );
 
+    const [date, setDate] = useState<string>(format(new Date(), "yyyy-MM-dd"));
+
+    useEffect(() => {
+        setDate(format(new Date(), "yyyy-MM-dd"));
+    }, [format(new Date(), "yyyy-MM-dd")]);
+
     const handleSetLocation = () => {
         navigator.geolocation.getCurrentPosition(
             (position) => {
@@ -49,13 +56,29 @@ const FaseLua: React.FC = () => {
                 );
             },
             (error) => {
+                setLocation({
+                    coords: {
+                        latitude: -26.724806,
+                        longitude: -53.538873
+                    }
+                });
+
+                globalThis.localStorage?.setItem(
+                    "location",
+                    JSON.stringify({
+                        coords: {
+                            latitude: -26.724806,
+                            longitude: -53.538873
+                        },
+                    })
+                );
                 console.log(error);
             }
         );
     };
 
     const { data, isLoading, isError } = useQuery({
-        queryKey: ["moon"],
+        queryKey: ["moon", date],
 
         refetchOnWindowFocus: false,
         refetchOnMount: false,
