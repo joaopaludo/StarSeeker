@@ -1,6 +1,6 @@
 {
     "name": "starseeker",
-    "version": "1.0.0",
+    "version": "0.9.0",
     "author": "Gabriel Perico e Joao Paulo Gregolon Paludo",
     "description": "App de informações e eventos astronômicos",
     "private": true,
