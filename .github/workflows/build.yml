@@ -34,6 +34,13 @@ jobs:
               with:
                   node-version: 20
 
+            - name: Make envfile
+              uses: SpicyPizza/create-envfile@v1
+              with:
+                GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+                NEXT_PUBLIC_MOONPHASE_API_KEY: ${{ secrets.NEXT_PUBLIC_MOONPHASE_API_KEY }}
+                file_name: .env
+
             - name: Install Dependencies
               run: npm install
 
